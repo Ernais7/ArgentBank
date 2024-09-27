@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import chat from "../../assets/icon-chat.png";
+import security from "../../assets/icon-security.png";
+import money from "../../assets/icon-money.png";
 
 function Home() {
   return (
@@ -16,17 +18,17 @@ function Home() {
       <section class="features">
         <h2 class="sr-only">Features</h2>
         <div class="feature-item">
-          <img src="./assets/icon-chat.png" alt="Chat Icon" class="feature-icon" />
+          <img class="feature-icon" src={chat} alt="Chat Icon" />
           <h3 class="feature-item-title">You are our #1 priority</h3>
           <p>Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.</p>
         </div>
         <div class="feature-item">
-          <img src="./assets/icon-money.png" alt="Chat Icon" class="feature-icon" />
+          <img class="feature-icon" src={money} alt="Chat Icon" />
           <h3 class="feature-item-title">More savings means higher rates</h3>
           <p>The more you save with us, the higher your interest rate will be!</p>
         </div>
         <div class="feature-item">
-          <img src="./assets/icon-security.png" alt="Chat Icon" class="feature-icon" />
+          <img class="feature-icon" src={security} alt="Chat Icon" />
           <h3 class="feature-item-title">Security you can trust</h3>
           <p>We use top of the line encryption to make sure your data and money is always safe.</p>
         </div>
