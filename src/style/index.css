@@ -12,9 +12,19 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.error-message{
+  color: red;
+  font-size: 20px;
+}
+#root {
+  display: contents;
+}
 
 .main {
   flex: 1;
+}
+.fa{
+  margin-right: 5px;
 }
 
 .bg-dark {
