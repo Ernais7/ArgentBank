@@ -23,8 +23,15 @@ const authSlice = createSlice({
     setError(state, action) {
       state.errorMessage = action.payload;
     },
+    setAuthFromStorage(state) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        state.isLoggedIn = true;
+        state.token = token; 
+      }
+    },
   },
 });
 
-export const { login, logout, setError } = authSlice.actions;
+export const { login, logout, setError, setAuthFromStorage } = authSlice.actions;
 export default authSlice.reducer;

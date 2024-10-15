@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react"; // Import useCallback
 import { useSelector, useDispatch } from "react-redux";
 import { setUser } from "../../redux/Slices/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +12,11 @@ function User() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isEditing, setIsEditing] = useState(false);
 
-  async function getUser() {
+  const getUser = useCallback(async () => {
     const token = localStorage.getItem("token");
     if (!token) {
       console.error("No token found, user is not authenticated.");
+      navigate("/sign-in");
       return;
     }
 
@@ -38,11 +39,20 @@ function User() {
       console.error("Error fetching user data:", error);
       throw error;
     }
-  }
+  }, [navigate]);
 
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate("/sign-in");
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/sign-in");
+      } else {
+        getUser()
+          .then((userData) => {
+            dispatch(setUser(userData));
+          })
+          .catch((error) => console.error("Error:", error));
+      }
     } else {
       getUser()
         .then((userData) => {
@@ -50,8 +60,8 @@ function User() {
         })
         .catch((error) => console.error("Error:", error));
     }
-  }, [isLoggedIn, navigate, dispatch]);
-
+  }, [isLoggedIn, navigate, dispatch, getUser]);
+  
   const handleEditClick = () => {
     setIsEditing(true);
   };
