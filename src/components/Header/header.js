@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../assets/argentBankLogo.png";
+import logo from "../../assets/argentBankLogo.webp";
 import "./header.css";
 import { logout } from "../../redux/Slices/authSlice";
 

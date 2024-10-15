@@ -50,6 +50,10 @@ function EditUser({ userName, firstName, lastName, onCancel }) {
 
   return (
     <form className="formEdit" onSubmit={handleFormSubmit}>
+      <label className="textEdit" htmlFor="userName">
+        User name:
+      </label>
+      <input className="inputEdit" type="text" value={newUserName} onChange={(e) => setNewUserName(e.target.value)} required />
       <label className="textEdit" htmlFor="firstName">
         First name:
       </label>
@@ -58,10 +62,6 @@ function EditUser({ userName, firstName, lastName, onCancel }) {
         Last name:
       </label>
       <input className="inputEdit" type="text" value={lastName} disabled />
-      <label className="textEdit" htmlFor="userName">
-        User name:
-      </label>
-      <input className="inputEdit" type="text" value={newUserName} onChange={(e) => setNewUserName(e.target.value)} required />
       <div className="button">
         <button className="buttonEdit" type="submit">
           Save
