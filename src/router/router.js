@@ -6,8 +6,8 @@ import User from "../pages/User/user";
 import Header from "../components/Header/header";
 import Footer from "../components/Footer/footer";
 import { useDispatch } from "react-redux";
-import { setAuthFromStorage } from "../redux/Slices/authSlice"; 
-
+import { setAuthFromStorage } from "../redux/Slices/authSlice";
+import ProtectedRoute from "../components/ProtectedRoute/protectedRoute";
 import "../style/index.css";
 
 function App() {
@@ -23,7 +23,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/user" element={<User />} />
+        <Route
+          path="/user"
+          element={
+            <ProtectedRoute>
+              <User />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </Router>
